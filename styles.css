@@ -1,0 +1,307 @@
+html {
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    --main-bg-color: #1c1c1c;
+    --main-fg-color: #e1e1e1;
+    --main-accent-color: #7fdbca;
+    --main-border-radius: 25px;
+    --main-container-vertical-padding: 20px;
+    --main-container-horizontal-padding: 30px;
+    --main-container-padding: var(--main-container-vertical-padding) var(--main-container-horizontal-padding);
+    --main-container-blur: blur(3px);
+    --secondary-bg-color: #2c2c2c;
+    --secondary-bg-opacity: 0.2;
+    --container-margin: 40px;
+}
+
+body {
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, #444444 1px, rgba(0, 0, 0, 0) 1px);
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Jetbrains Mono', 'Inter', sans-serif;
+  background-color: var(--main-bg-color);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+    flex-grow: 1;
+}
+
+main::before {
+    content: "";
+    background-color: var(--secondary-bg-color);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: var(--secondary-bg-opacity);
+    border-radius: var(--main-border-radius);
+}
+
+main {
+    display: block;
+    padding: 20px 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    color: var(--main-fg-color);
+    position: relative;
+    border-radius: var(--main-border-radius);
+    margin-bottom: 50px;
+}
+
+main section {
+    min-height: unset;
+    margin-bottom: 80px;
+}
+
+h1 {
+    color: var(--main-accent-color);
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+nav {
+    color: var(--main-fg-color);
+    border-radius: var(--main-border-radius);
+    position: relative;
+    padding: var(--main-container-padding);
+}
+
+nav::before {
+    content: "";
+    background-color: var(--secondary-bg-color);
+    opacity: var(--secondary-bg-opacity);
+    border-radius: var(--main-border-radius);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+nav ul, ul.project-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--main-bg-color);
+}
+
+nav ul li button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: var(--main-fg-color);
+    cursor: pointer;
+    border: unset;
+}
+
+.page {
+    margin-top: 30px;
+    grid-template-columns: 200px auto;
+    margin-left: var(--container-margin);
+    margin-right: var(--container-margin);
+}
+
+.project-list li {
+    display: flex;
+    width: fit-content;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--main-fg-color);
+}
+
+.project-list li .media img {
+    max-height: 650px;
+}
+
+.project-list li .media img, .project-list li .media video {
+    max-width: 100%;
+}
+
+.project-list li .text {
+    margin-left: 40px;
+    max-width: 400px;
+}
+
+.project-list li a {
+    color: var(--main-fg-color);
+    font-size: 1.3em;
+}
+
+.window {
+    width: calc(100% + 2*var(--main-container-horizontal-padding));
+    margin-left: calc(-1*var(--main-container-horizontal-padding));
+    margin-top: calc(-1*var(--main-container-vertical-padding));
+    border-radius: 10px 10px 0 0;
+    height: 35px;
+    margin-bottom: 30px;
+    background: #151515;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: var(--main-container-padding);
+    padding: var(--main-container-vertical-padding) calc(var(--main-container-horizontal-padding)/2);
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.window * {
+    cursor: default;
+}
+
+.window .controls {
+    display: flex;
+    --control-size: 10px;
+}
+
+.window .controls > .minimize-control::after {
+  background: #0a784a;
+}
+
+.window .controls > .maximize-control::after {
+  background: #8bbd46;
+}
+
+.window .controls > .close-control::after {
+  background: #b0261c;
+}
+
+.window .controls > div {
+    border-radius: 100%;
+    width: var(--control-size);
+    height: var(--control-size);
+    position: relative;
+    opacity: 1;
+    will-change: filter;
+    filter: unset;
+    padding: 15px 10px;
+    box-sizing: border-box;
+}
+
+.window .controls > div::after {
+    content: "";
+    border-radius: 100%;
+    width: var(--control-size);
+    height: var(--control-size);
+    opacity: 1;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.window .controls > div:hover {
+    filter: brightness(150%);
+}
+
+footer {
+    text-align: center;
+    position: relative;
+    padding: 20px 20px;
+    margin-top: auto;
+    color: var(--main-fg-color);
+    margin-bottom: var(--container-margin);
+}
+
+footer::after {
+    background: var(--secondary-bg-color);
+    content: "";
+    opacity: var(--secondary-bg-opacity);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.full-width {
+    width: 100vw;
+    transform: translateX(calc((40em - 100vw)/2));
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  main, nav, footer {
+    -webkit-backdrop-filter: var(--main-container-blur);
+    backdrop-filter: var(--main-container-blur);
+  }
+}
+
+/* Breakpoints for side menu nav */
+/* With side nav */
+@media (min-width: 900px) {
+    .page {
+        display: grid;
+        gap: var(--container-margin);
+    }
+
+    nav {
+        margin-bottom: auto;
+        position: sticky;
+        top: 30px;
+    }
+
+    main {
+
+    }
+
+    footer {
+        grid-column: span 2;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+}
+
+/* With top nav */
+@media (max-width: 899px) {
+    .page > *:not(:last-child) {
+        margin-bottom: 40px;
+    }
+
+    nav .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: unset;
+    }
+
+    nav .nav-links li:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    nav .nav-links li {
+        margin-bottom: 20px;
+    }
+}
+
+/* Breakpoint for project list items to switch to vertical stacking */
+@media (max-width: 1490px) {
+    .project-list li {
+        flex-direction: column;
+    }
+
+    .project-list li .text {
+        margin-left: unset;
+        max-width: unset;
+    }
+}

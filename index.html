@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Name — Resume</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="navbar">
+        
+        <div class="window">
+            <span>Nav</span>
+            <div class="controls">
+                <div class="minimize-control"></div>
+                <div class="maximize-control"></div>
+                <div class="close-control"></div>
+            </div>
+        </div>
+
+        <div class="nav-content">
+            <div class="nav-name">nicholas churchill</div>
+            <ul class="nav-links">
+            <li>
+                <a href="#about">
+                    <button>about</button>
+                </a>
+            </li>
+            <li>
+                <a href="#projects">
+                    <button>projects</button>
+                </a>
+            </li>
+            <li>
+                <a href="#experience">
+                    <button>experience</button>
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    <button>contact</button>
+                </a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+                <div class="window">
+            <span>Portfolio</span>
+            <div class="controls">
+                <div class="minimize-control"></div>
+                <div class="maximize-control"></div>
+                <div class="close-control"></div>
+            </div>
+        </div>
+        <section id="about">
+        <h1>about</h1>
+        <p>Self-directed software engineer building precise, pragmatic systems. Comfortable across the stack, biased toward clarity and control.</p>
+        </section>
+
+        <section id="projects">
+        <h1>projects</h1>
+        <ul class="project-list" style="list-style-type: none;">
+                        <li>
+                <div class="media">
+                    <a data-fslightbox="gallery1">
+                        <img src="kyco.png"/>
+                    </a>
+                </div>
+                <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: right;">
+                    <div class="about">
+                        <h2>kyco kids state compliance reporting automation</h2>
+                        <p>developed from concept to production a web application for logging student timesheets and other associated information and automated compliance reporting related to the Arizona free, reduced, and paid lunch program. </p>
+                    </div>
+                    <div class="tech">
+                        <span>tech used: php, react.js, mysql, docker, webpack, wkhtmltopdf, aws ec2, rds, s3</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="media">
+                    <video src="windowpacking.mp4" autoplay loop muted playsinline />
+                </div>
+                <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: right;">
+                    <div class="about">
+                        <h2>window packing</h2>
+                        <p>designed and programmed a bespoke packing algorithm with window management in mind. implemented for hyprland and extensible via adapters</p>
+                    </div>
+                    <div class="more-info">
+                        <div class="tech" style="margin-bottom: 10px;">
+                            <span>tech used: node.js, javascript, shell scripting</span>
+                        </div>
+                        <div class="cta">
+                            <a href="https://github.com/MistrBones/window-packing" target="_blank">view project</a>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+            <li>
+                <div class="media">
+                    <img src="pnw.webp"/>
+                </div>
+                <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                    <div class="about">
+                        <h2>pnw mold masters site</h2>
+                        <p>implemented webpage mockups on behalf of pacific northwest mold masters on their wix site. worked cross-functionally with design team to bring their vision to life within the limits provided by the existing site</p>
+                    </div>
+                    <div class="tech">
+                        <span>tech used: html, css, js, wix, photoshop</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        </section>
+
+        <section id="experience">
+        <h1>experience</h1>
+        <div class="job">
+            <h2>Company Name</h2>
+            <p><em>Role Title · Dates</em></p>
+            <ul>
+            <li>Built X to improve Y by Z%.</li>
+            <li>Collaborated with ___ on ___.</li>
+            </ul>
+        </div>
+        </section>
+
+        <section id="contact">
+        <h1>contact</h1>
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/yourhandle">yourhandle</a></p>
+        </section>
+    </main>
+    <footer class="">
+        <p>&copy; 2025 nicholas churchill</p>
+    </footer>
+  </div>
+
+  <!-- Optional minimal JS -->
+  <script>
+    // Highlight nav item for current section
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('main > section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (pageYOffset >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+  <script src="lightbox.min.js"></script>
+</body>
+</html>
