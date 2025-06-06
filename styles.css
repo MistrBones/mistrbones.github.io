@@ -323,6 +323,7 @@ footer::after {
         margin-bottom: auto;
         position: sticky;
         top: 30px;
+        margin-top: 35vh;
     }
 
     main {
