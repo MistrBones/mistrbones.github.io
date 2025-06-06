@@ -13,11 +13,10 @@
 </head>
 <body>
   <div class="page">
-    <nav class="navbar">
-        
+    <nav class="navbar will-minimize"> 
         <div class="window">
             <span>Nav</span>
-            <div class="controls">
+            <div class="controls" target="nav.navbar">
                 <div class="minimize-control"></div>
                 <div class="maximize-control"></div>
                 <div class="close-control"></div>
@@ -51,10 +50,10 @@
         </div>
     </nav>
 
-    <main>
+    <main class="will-minimize">
                 <div class="window">
             <span>Portfolio</span>
-            <div class="controls">
+            <div class="controls" target="main">
                 <div class="minimize-control"></div>
                 <div class="maximize-control"></div>
                 <div class="close-control"></div>
@@ -70,7 +69,7 @@
         <ul class="project-list" style="list-style-type: none;">
                         <li>
                 <div class="media">
-                    <a data-fslightbox="gallery1">
+                    <a data-fslightbox="gallery1" href="kyco.png">
                         <img src="kyco.png"/>
                     </a>
                 </div>
@@ -94,11 +93,14 @@
                         <p>designed and programmed a bespoke packing algorithm with window management in mind. implemented for hyprland and extensible via adapters</p>
                     </div>
                     <div class="more-info">
-                        <div class="tech" style="margin-bottom: 10px;">
+                        <div class="tech" style="margin-bottom: 24px;">
                             <span>tech used: node.js, javascript, shell scripting</span>
                         </div>
                         <div class="cta">
                             <a href="https://github.com/MistrBones/window-packing" target="_blank">view project</a>
+                        </div>
+                        <div class="cta" style="margin-top: 10px;">
+                            <a href="window-packing/index.html" target="_blank">try demo</a>
                         </div>
                     </div>
 
@@ -106,7 +108,7 @@
             </li>
 
             <li>
-                <div class="media">
+                <div class="media" style="flex-grow: 1; text-align: center;">
                     <img src="pnw.webp"/>
                 </div>
                 <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
@@ -125,44 +127,245 @@
         <section id="experience">
         <h1>experience</h1>
         <div class="job">
-            <h2>Company Name</h2>
-            <p><em>Role Title · Dates</em></p>
+            <h2>GUMI Studios</h2>
+            <p><em>Frontend Developer · Jan 2020 – Present</em></p>
             <ul>
-            <li>Built X to improve Y by Z%.</li>
-            <li>Collaborated with ___ on ___.</li>
+            <li>Implemented custom webpage designs on Shopify based on designer specifications.</li>
+            <li>Collaborated with non-technical clients to define business goals and recommend
+            cost-effective Shopify-native or app-based solutions.</li>
+            </ul>
+        </div>
+                <div class="job">
+            <h2>KyCo Kids</h2>
+            <p><em>Technical Co-Founder · Mar 2020 - Sep 2022</em></p>
+            <ul>
+            <li>Saved schools an estimated $800 per month in labor costs by automating report gen-
+eration, improving accuracy, and reducing manual errors in compliance reporting.</li>
+            <li>Communicated directly with users to gather feedback, identify pain points, and trou-
+bleshoot technical issues ensuring a smooth and efficient user experience.</li>
+            <li>Took full ownership of the software development lifecycle from ideation to deployment
+incluidng requirement gathering, design, development, and ongoing maintenance.</li>
+            </ul>
+        </div>
+                <div class="job">
+            <h2>Young Import Export and Consulting LLC (DBA Louis XVI Watches)</h2>
+            <p><em>Technical Co-Founder · Sep 2016 - Dec 2019</em></p>
+            <ul>
+            <li>Modernized and optimized the brand’s e-commerce website resulting in a ~20% in-
+crease in sales conversion rate.</li>
+            <li>Implemented A/B testing to assess and quantify the impact of new design changes.</li>
+            <li>Pursued self-guided learning on algorithmic ad bidding with a focus on Facebook’s
+ad platform.</li>
             </ul>
         </div>
         </section>
 
         <section id="contact">
         <h1>contact</h1>
-        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/yourhandle">yourhandle</a></p>
+
+        <p>Email: <a class="mail" first="upjr" second="@upjovshz-jobyjopss.jvt" shift="19" callback="mailCallback" revealed="false">click to reveal</a></p>
+
+        <p>Phone: <a class="phone" first="618 55" second="6 6197" shift="23" callback="phoneCallback" revealed="false">click to reveal</a></p>
         </section>
+
     </main>
     <footer class="">
         <p>&copy; 2025 nicholas churchill</p>
     </footer>
   </div>
 
-  <!-- Optional minimal JS -->
+  <script>
+    // handle container controls
+    document.addEventListener("click", function( event ) {
+        var parent = event.target.parentElement;
+        if (parent.classList.contains("controls")) {
+            // controls elemen clicked
+            var targetContainer = parent.getAttribute("target");
+            var container = document.querySelectorAll(targetContainer)[0];
+            container.classList.toggle("minimized");
+            return true;
+        }
+    })
+  </script>
+  <script>
+    //handle contact info
+  var email = document.querySelectorAll("a.mail")[0];
+  var phone = document.querySelectorAll("a.phone")[0];
+
+  function check() {
+    return true;
+    // Basic checks:
+    const hasMoved = window.__mouseMoved;
+    const timeSpent = Date.now() - window.__pageLoadTime;
+    return hasMoved && timeSpent > 7000;
+  }
+
+    window.__mouseMoved = false;
+    window.__pageLoadTime = Date.now();
+    window.addEventListener("mousemove", () => {
+        window.__mouseMoved = true;
+    });
+
+  phone.addEventListener("click", handleRevealText);
+  email.addEventListener("click", handleRevealText);
+
+  function handleRevealText( event, callback ) {
+    if (event.target.getAttribute("revealed") == "false") {
+        event.preventDefault();
+    }
+    if (check() == true) {
+        var first = event.target.getAttribute("first");
+        var second = event.target.getAttribute("second");
+        var shift = parseInt(event.target.getAttribute("shift"));
+        var string = cipher(first, shift) + cipher(second, shift);
+        var callback = event.target.getAttribute("callback");
+        window[callback](event.target, string);
+        return;
+        //var callback = event.target.callback;
+        //callback(event.target, string);
+        //event.target.innerText = string;
+    }
+    else {
+        alert("For one reason or another you failed the bot check. If this is a mistake please refresh the page and try again.");
+    }
+  }
+
+  function phoneCallback( element, string ) {
+    element.setAttribute("href", "tel:+1" + string.replace(/ /g,''));
+    element.setAttribute("revealed", true);
+    element.textContent = string;
+    return;
+  }
+
+  function mailCallback( element, string ) {
+    element.href = "mailto:" + string;
+    element.setAttribute("revealed", true);
+    element.textContent = string;
+    return;
+  }
+
+  function cipher(str, shift) {
+  return str
+    .split('')
+    .map(char => {
+      const code = char.charCodeAt(0);
+
+      // Uppercase letters
+      if (code >= 65 && code <= 90) {
+        return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+      }
+
+      // Lowercase letters
+      if (code >= 97 && code <= 122) {
+        return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+      }
+
+      // Numbers
+      if (code >= 48 && code <= 57) {
+        return String.fromCharCode(((code - 48 + shift) % 10) + 48);
+      }
+
+      // Leave other characters (e.g., punctuation) unchanged
+      return char;
+    })
+    .join('');
+}
+    
+  </script>
   <script>
     // Highlight nav item for current section
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('main > section');
+    const main = document.querySelectorAll("main")[0];
 
-    window.addEventListener('scroll', () => {
+    function setActive() {
       let current = '';
       sections.forEach(section => {
-        const top = section.offsetTop - 100;
+        const top = section.offsetTop - 150;
+        var currentSection = section.getAttribute("id");
         if (pageYOffset >= top) {
-          current = section.getAttribute('id');
+          current = currentSection;
+        }
+        if (currentSection == "contact" && pageYOffset >= (top-600)) {
+            current = currentSection;
         }
       });
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + current);
       });
+    }
+
+    window.addEventListener('scroll', () => {
+        setActive();
     });
+    document.addEventListener("DOMContentLoaded", setActive);
+    navLinks.forEach(link => {
+        link.addEventListener("click", function( event ) {
+            // check if main content minimized
+            if (main.classList.contains("minimized")) {
+                // is minimized, prevent default behavior
+                event.preventDefault();
+                main.scrollTop = 0;
+            }
+        })
+    });
+  </script>
+  <script>
+    // make window titlebars moveable
+    var titleBars = document.querySelectorAll(".window");
+    titleBars.forEach(titleBar => {
+        var container = titleBar.parentNode;
+        container.setAttribute("data-x", "0");
+        container.setAttribute("data-y", "0");
+        titleBar.addEventListener("mousedown", function ( event ) {
+            titleBars.forEach(otherTitleBar => {
+                otherTitleBar.parentElement.style.zIndex = "unset";
+            });
+            container.style.zIndex = "10";
+            startMouseX = event.clientX;
+            startMouseY = event.clientY;
+            finalX = 0;
+            finalY = 0;
+            startElementX = parseInt(container.getAttribute("data-x"));
+            startElementY = parseInt(container.getAttribute("data-y"));
+            function moveWrapper( event ) {
+                handleMove( event, container, startMouseX, startMouseY, finalX, finalY );
+            }
+            document.addEventListener("mousemove", moveWrapper, true);
+            document.addEventListener("mouseup", function( event ) {
+                document.removeEventListener("mousemove", moveWrapper, true);
+            });
+        });
+    });
+
+    var containers = [];
+    titleBars.forEach(titleBar => {
+        var container = titleBar.parentElement;
+        containers.push(container);
+    });
+
+    containers.forEach(container => {
+        container.addEventListener("click", function( event ) {
+            if (event.target.classList.contains("window") ==false) {
+            containers.forEach(otherContainer => {
+                otherContainer.style.zIndex = "unset";
+            });
+            event.target.style.zIndex = "10";
+            }
+        });
+    });
+
+    function handleMove( event, container ) {
+        var currentMouseX = event.clientX;
+        var currentMouseY = event.clientY;
+        var differenceX = currentMouseX - startMouseX;
+        var differenceY = currentMouseY - startMouseY;
+        finalX = startElementX + differenceX;
+        finalY = startElementY + differenceY;
+        container.style.transform = "translate(" + finalX + "px, " + finalY + "px)";
+        container.setAttribute("data-x", finalX);
+        container.setAttribute("data-y", finalY);
+    }
   </script>
   <script src="lightbox.min.js"></script>
 </body>
