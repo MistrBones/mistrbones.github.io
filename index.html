@@ -237,7 +237,7 @@ ad platform</li>
   function phoneCallback( element, string ) {
     element.setAttribute("href", "tel:+1" + string.replace(/ /g,''));
     element.setAttribute("revealed", true);
-    element.textContent = string;
+    element.textContent = "+1 " + string;
     return;
   }
 
