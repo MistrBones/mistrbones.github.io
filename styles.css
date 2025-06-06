@@ -376,6 +376,36 @@ footer::after {
     }
 }
 
+div.hero {
+    display: inline-block;
+    animation-timing-function: ease-out;
+    width: auto;
+    text-wrap: nowrap;
+    animation: 
+    typing 1.4s steps(8, end),
+    blink-caret 1.2s step-end infinite;
+    overflow: hidden;
+    border-right: 1.7em solid var(--main-fg-color);
+    white-space: nowrap;
+}
+
+div.hero h1 {
+    margin: unset;
+}
+
+/* , blink-caret .75s step-end infinite; */
+
+@keyframes typing {
+  from { width: 0% }
+  to { width: 14.5em }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #c1c1c1 }
+}
+
 @media (max-width: 768px) {
     body {
         font-size: 18px;
@@ -389,6 +419,13 @@ footer::after {
     h1 {
         font-size: 2.2em;
     }
+    @keyframes typing {
+    from { width: 0% }
+    to { width: 10.5em }
+    }
+    div.hero {
+        border-right: 1em solid var(--main-fg-color);
+    }
 }
 
 @media (max-width: 300px) {
@@ -398,29 +435,11 @@ footer::after {
     h1 {
         font-size: 1.9em;
     }
-}
-
-
-h1.hero {
-    display: block;
-    width: max-content;
-    max-width: max-content;
-    text-wrap: nowrap;
-    animation: 
-    typing 5.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-    overflow: hidden;
-    border-right: .55em solid var(--main-fg-color);
-   
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #c1c1c1 }
+     @keyframes typing {
+    from { width: 0% }
+    to { width: 9em }
+    }
+    div.hero {
+        border-right: 1em solid var(--main-fg-color);
+    }
 }

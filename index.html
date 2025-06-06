@@ -21,7 +21,7 @@
 </head>
 <body>
   <div class="page">
-    <nav class="navbar will-minimize"> 
+    <nav class="navbar will-minimize draggable"> 
         <div class="window">
             <span>~/nav</span>
             <div class="controls" target="nav.navbar">
@@ -58,7 +58,7 @@
         </div>
     </nav>
 
-    <main class="will-minimize">
+    <main class="will-minimize draggable">
                 <div class="window">
             <span>~/portfolio</span>
             <div class="controls" target="main">
@@ -68,7 +68,7 @@
             </div>
         </div>
         <section id="about">
-        <h1 class="hero">~/about</h1>
+        <div class="hero"><h1>~/about</h1></div>
         <p>nicholas churchill is a self-directed software engineer with 7 years of experience in fullstack development and taking software from concept to production as a sole technical co-founder</p>
         </section>
 
@@ -361,7 +361,7 @@ ad platform</li>
             containers.forEach(otherContainer => {
                 otherContainer.style.zIndex = "unset";
             });
-            event.target.style.zIndex = "10";
+            event.target.closest(".draggable").style.zIndex = "10";
             }
         });
     });
