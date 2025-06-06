@@ -357,6 +357,11 @@ crease in sales conversion rate</li>
             document.addEventListener("mousemove", moveWrapper, true);
             document.addEventListener("mouseup", function( event ) {
                 document.removeEventListener("mousemove", moveWrapper, true);
+                if (container.classList.contains("navbar")) {
+                    // update the top style to keeep 
+                    var newTop = (parseInt(container.getAttribute("data-y")) - 15)*-1;
+                    container.style.top = newTop + "px";
+                }
             });
         });
     });
