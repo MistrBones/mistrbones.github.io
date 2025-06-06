@@ -202,12 +202,18 @@ ad platform</li>
     //handle contact info
   var email = document.querySelectorAll("a.mail")[0];
   var phone = document.querySelectorAll("a.phone")[0];
+  var isBot = true;
+  const botdPromise = import('./botd.js').then((Botd) => Botd.load())
+  botdPromise
+        .then((botd) => botd.detect())
+        .then((result) => { isBot = result.bot; console.log(result); })
+        .catch((error) => { console.error(error); isBot = false; });
 
   function check() {
     // Basic checks:
     const hasMoved = window.__mouseMoved;
     const timeSpent = Date.now() - window.__pageLoadTime;
-    return hasMoved && timeSpent > 7000;
+    return hasMoved && timeSpent > 2500 && !isBot;
   }
 
     window.__mouseMoved = false;
