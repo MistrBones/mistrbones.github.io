@@ -22,8 +22,8 @@
 </head>
 <body>
   <div class="page">
-    <nav class="navbar will-minimize draggable"> 
-        <div class="window">
+    <nav class="navbar will-minimize draggable" tabindex="-1"> 
+        <div class="window" tabindex="-1">
             <span>~/nav</span>
             <div class="controls" target="nav.navbar">
                 <div class="minimize-control"></div>
@@ -59,8 +59,8 @@
         </div>
     </nav>
 
-    <main class="will-minimize draggable">
-                <div class="window">
+    <main class="will-minimize draggable" tabindex="-1">
+                <div class="window" tabindex="-1">
             <span>~/portfolio</span>
             <div class="controls" target="main">
                 <div class="minimize-control"></div>
@@ -78,8 +78,8 @@
         <ul class="project-list" style="list-style-type: none;">
                         <li>
                 <div class="media">
-                    <a data-fslightbox="gallery1" href="kyco.png">
-                        <img src="kyco.png"/>
+                    <a data-fslightbox="gallery1" href="kyco.png" aria-label="Open screenshot in lightbox">
+                        <img src="kyco.png" alt="A screenshot of a computer generated spreadsheet tracking student meal quantity totals for April 2022"/>
                     </a>
                 </div>
                 <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: right;">
@@ -94,7 +94,7 @@
             </li>
             <li>
                 <div class="media">
-                       <video src="windowpacking.mp4" autoplay loop muted />
+                       <video src="windowpacking.mp4" alt="A video depicting the operation of the window packing algorithm when integrated with hyper land." autoplay loop muted controls>A video depicting the operation of the window packing algorithm when integrated with hyper land.</video>
                 </div>
                 <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: right;">
                     <div class="about">
@@ -118,8 +118,8 @@
 
             <li>
                 <div class="media" style="flex-grow: 1; text-align: center;">
-                    <a data-fslightbox="gallery3" href="pnw.webp">
-                        <img src="pnw.webp"/>
+                    <a data-fslightbox="gallery3" aria-label="Open screenshot in lightbox" href="pnw.webp">
+                        <img src="pnw.webp" alt="A screenshot of website landing page on a mobile phone"/>
                     </a>
                 </div>
                 <div class="text" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
@@ -174,9 +174,9 @@ ad platform</li>
         <section id="contact">
         <h1>~/contact</h1>
 
-        <p>Email: <a class="mail" first="upjr" second="@upjovshz-jobyjopss.jvt" shift="19" callback="mailCallback" revealed="false">click to reveal</a></p>
+        <p>Email: <a class="mail" first="upjr" second="@upjovshz-jobyjopss.jvt" shift="19" callback="mailCallback" revealed="false" tabindex="0">click to reveal</a></p>
 
-        <p>Phone: <a class="phone" first="618 55" second="6 6197" shift="23" callback="phoneCallback" revealed="false">click to reveal</a></p>
+        <p>Phone: <a class="phone" first="618 55" second="6 6197" shift="23" callback="phoneCallback" revealed="false" tabindex="0">click to reveal</a></p>
         </section>
 
     </main>
@@ -217,9 +217,19 @@ ad platform</li>
     });
 
   phone.addEventListener("click", handleRevealText);
-  email.addEventListener("click", handleRevealText);
+  phone.addEventListener("keydown", function ( event ) {
+    if (event.key == "Enter") {
+        handleRevealText(event);
+    }
+  });
+    email.addEventListener("click", handleRevealText);
+    email.addEventListener("keydown", function ( event ) {
+        if (event.key == "Enter") {
+            handleRevealText(event);
+        }
+    });
 
-  function handleRevealText( event, callback ) {
+  function handleRevealText( event ) {
     if (event.target.getAttribute("revealed") == "false") {
         event.preventDefault();
     }
