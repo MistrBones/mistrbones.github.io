@@ -13,6 +13,7 @@ html {
     --secondary-bg-color: #2c2c2c;
     --secondary-bg-opacity: 0.2;
     --container-margin: 40px;
+    --accent-color-one: #27a5c2;
     scroll-behavior: smooth;
 }
 
@@ -68,7 +69,7 @@ main section {
 }
 
 h1 {
-    color: var(--main-accent-color);
+    color: var(--accent-color-one);
     font-size: 3em;
 }
 
@@ -350,6 +351,10 @@ footer::after {
     }
 
     nav .nav-links li {
+        margin-bottom: 20px;
+    }
+
+    ul.project-list li .media {
         margin-bottom: 20px;
     }
 }
