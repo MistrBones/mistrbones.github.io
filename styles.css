@@ -353,10 +353,6 @@ footer::after {
     nav .nav-links li {
         margin-bottom: 20px;
     }
-
-    ul.project-list li .media {
-        margin-bottom: 20px;
-    }
 }
 
 /* Breakpoint for project list items to switch to vertical stacking */
@@ -368,6 +364,10 @@ footer::after {
     .project-list li .text {
         margin-left: unset;
         max-width: unset;
+    }
+
+    ul.project-list li .media {
+        margin-bottom: 20px;
     }
 }
 
