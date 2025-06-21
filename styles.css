@@ -407,6 +407,7 @@ svg.clipboard {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    white-space: pre-wrap;
 }
 
 @media(max-width: 677px) {
